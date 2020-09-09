@@ -6,124 +6,240 @@
 package weatherapp;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 
 /**
+ * FXML Controller class
  *
  * @author rewil
  */
 public class FXMLDocumentController implements Initializable {
     
-    @FXML
-    TextField morningText;
-    @FXML
-    TextField noonText;
-    @FXML
-    TextField eveningText;
-    @FXML
-    TextField nightText;
+    @FXML private ListView conditionsList;
+    @FXML private CheckBox rerollSubsCheck;
     
-    @FXML
-    Label morningLabel;
-    @FXML
-    Label noonLabel;
-    @FXML
-    Label eveningLabel;
-    @FXML
-    Label nightLabel;
+    @FXML private ListView seasonsList;
+    @FXML private ListView enabledSeasonsList;
+    @FXML private ListView genresList;
+    @FXML private ListView enabledGenresList;
     
-    @FXML
-    RadioButton summerRadio;
-    @FXML
-    RadioButton autumnRadio;
-    @FXML
-    RadioButton winterRadio;
-    @FXML
-    RadioButton springRadio;
-    @FXML
-    RadioButton allRadio;
+    @FXML private TextField numField;
     
-    ToggleGroup seasons;
+    @FXML private CheckBox timeCheck;
+    @FXML private TextField startHourField;
+    @FXML private TextField startMinuteField;
+    @FXML private TextField incHourField;
+    @FXML private TextField incMinuteField;
     
-    @FXML
-    CheckBox clearCheck;
-    @FXML
-    CheckBox windyCheck;
-    @FXML
-    CheckBox cloudyCheck;
-    @FXML
-    CheckBox rainyCheck;
-    @FXML
-    CheckBox snowyCheck;
-    @FXML
-    CheckBox conditionsCheck;
-    @FXML
-    CheckBox extremesCheck;
+    @FXML private CheckBox smoothCheck;
     
-    weatherPicker wp = new weatherPicker();
+    private ArrayList<String> disabledSeasons = new ArrayList<>();
+    private ArrayList<String> enabledSeasons = new ArrayList<>();
+    private ArrayList<String> disabledGenres = new ArrayList<>();
+    private ArrayList<String> enabledGenres = new ArrayList<>();
     
-    public void generateDay() {
-        wp.resetLimits();
-        morningText.setText(pick());
-        morningLabel.setText(wp.getLastCategory());
-        noonText.setText(pickSmooth());
-        noonLabel.setText(wp.getLastCategory());
-        eveningText.setText(pickSmooth());
-        eveningLabel.setText(wp.getLastCategory());
-        nightText.setText(pickSmooth());
-        nightLabel.setText(wp.getLastCategory());
+    private ConditionManager cm = new ConditionManager();
+    private ArrayList<Condition> conditions = new ArrayList<>();
+    
+  //----------------------------------------------------------------------------
+    
+    @FXML 
+    public void rerollAction() {
+        int i = conditionsList.getSelectionModel().getSelectedIndex();
+        conditionsList.getSelectionModel().clearSelection();
+        if(i == -1) return;
+        do{ 
+            rerollProcess(i++);
+        } while(rerollSubsCheck.isSelected() && i < conditions.size());
     }
-    
-    public void redoMorning() {
-        morningText.setText(pickSmooth());
-    }
-    
-    public void redoNoon() {
-        noonText.setText(pickSmooth());
-    }
-    
-    public void redoEvening() {
-        eveningText.setText(pickSmooth());
-    }
-    
-    public void redoNight() {
-        nightText.setText(pickSmooth());
-    }
-    
-    public String pick() {
-        return wp.pick(getSeason(), extremesCheck.isSelected(), clearCheck.isSelected(), windyCheck.isSelected(), cloudyCheck.isSelected(), rainyCheck.isSelected(), snowyCheck.isSelected(), conditionsCheck.isSelected());
-    }
-    
-    public String pickSmooth() {
-        return wp.pickSmooth(getSeason(), extremesCheck.isSelected(), clearCheck.isSelected(), windyCheck.isSelected(), cloudyCheck.isSelected(), rainyCheck.isSelected(), snowyCheck.isSelected(), conditionsCheck.isSelected());
-    }
-    
-    public Season getSeason() {
-        if(summerRadio.isSelected()) {
-            return Season.Summer;
+    private void rerollProcess(int i) {
+        Condition c = null;
+        if(i == 0 || conditions.get(i-1) == null) c = cm.getCondition();
+        else c = cm.getCondition(conditions.get(i-1));
+        conditions.remove(i);
+        conditions.add(i, c);
+        
+        ObservableList<String> list = conditionsList.getItems();
+        String temp = "";
+        if(timeCheck.isSelected()) {
+            temp = list.get(i);
+            temp = temp.split(" ")[0] + " ";
         }
-        if(autumnRadio.isSelected()) {
-            return Season.Autumn;
+        temp += c.getName();
+        list.remove(i);
+        list.add(i, temp);
+        
+    }
+    @FXML 
+    public void generateAction() {
+        if(enabledSeasons.isEmpty() || enabledGenres.isEmpty()) return;
+        // Setup
+        int count = 12;
+        try{
+            count = Integer.parseInt(numField.getText().trim());
+        } catch (Exception e) {}
+        int hour = 8;
+        int minute = 0;
+        int incHour = 1;
+        int incMinute = 0;
+        if(timeCheck.isSelected()) {
+            try {
+                hour = Integer.parseInt(startHourField.getText().trim());
+                minute = Integer.parseInt(startMinuteField.getText().trim());
+                incHour = Integer.parseInt(incHourField.getText().trim());
+                incMinute = Integer.parseInt(incMinuteField.getText().trim());
+            } catch (Exception e) {}
         }
-        if(winterRadio.isSelected()) {
-            return Season.Winter;
+        
+        // Generation
+        Condition c = null;
+        if(!conditions.isEmpty() && smoothCheck.isSelected()) {
+            c = conditions.get(conditions.size() - 1);
+            if(c != null) c = cm.getCondition(c);
+            else c = cm.getCondition();
+        } else {
+            c = cm.getCondition();
         }
-        if(springRadio.isSelected()) {
-            return Season.Spring;
+        conditions.clear();
+        conditions.add(c);
+        for(int i = 0;  i < count; ++i) {
+            if(c == null) break;
+            c = cm.getCondition(c);
+            conditions.add(c);
         }
-        return Season.All;
+        
+        // Printing
+        ArrayList<String> out = new ArrayList<>();
+        for(Condition d : conditions) {
+            String temp = "";
+            if(d == null) temp += "Could not find viable condition";
+            else {
+                if(timeCheck.isSelected()) {
+                    temp += "[";
+                    while(minute > 59) {
+                        minute -= 60;
+                        hour += 1;
+                    }
+                    if(hour == 13) hour = 1;
+                    if(hour < 10) temp += "0";
+                    temp += hour + ":";
+                    if(minute < 10) temp += "0";
+                    temp += minute + "] ";
+                    hour += incHour;
+                    minute += incMinute;
+                }
+                temp += d.getName();
+            }
+            out.add(temp);
+        }
+        conditionsList.setItems(convertList(out));
     }
     
+    @FXML
+    public void enableSeasonAction() {
+        int i = seasonsList.getSelectionModel().getSelectedIndex();
+        if(i == -1) return;
+        String temp = disabledSeasons.remove(i);
+        enabledSeasons.add(temp);
+        cm.enableSeason(temp);
+        updateSeasonLists();
+    }
+    @FXML
+    public void disableSeasonAction() {
+        int i = enabledSeasonsList.getSelectionModel().getSelectedIndex();
+        if(i == -1) return;
+        String temp = enabledSeasons.remove(i);
+        disabledSeasons.add(temp);
+        cm.disableSeason(temp);
+        updateSeasonLists();
+    }
+    @FXML
+    public void enableGenreAction() {
+        int i = genresList.getSelectionModel().getSelectedIndex();
+        if(i == -1) return;
+        String temp = disabledGenres.remove(i);
+        enabledGenres.add(temp);
+        cm.enableGenre(temp);
+        updateGenreLists();
+    }
+    @FXML
+    public void disableGenreAction() {
+        int i = enabledGenresList.getSelectionModel().getSelectedIndex();
+        if(i == -1) return;
+        String temp = enabledGenres.remove(i);
+        disabledGenres.add(temp);
+        cm.disableGenre(temp);
+        updateGenreLists();
+    }
+    //<editor-fold desc="List Mouse Actions">
+    @FXML
+    public void enableSeasonClick(MouseEvent e) {
+        if(e.getClickCount() > 1 && e.getButton().equals(MouseButton.PRIMARY)) enableSeasonAction();
+    }
+    @FXML
+    public void disableSeasonClick(MouseEvent e) {
+        if(e.getClickCount() > 1 && e.getButton().equals(MouseButton.PRIMARY)) disableSeasonAction();
+    }
+    @FXML
+    public void enableGenreClick(MouseEvent e) {
+        if(e.getClickCount() > 1 && e.getButton().equals(MouseButton.PRIMARY)) enableGenreAction();
+    }
+    @FXML
+    public void disableGenreClick(MouseEvent e) {
+        if(e.getClickCount() > 1 && e.getButton().equals(MouseButton.PRIMARY)) disableGenreAction();
+    }
+    //</editor-fold>
+    
+    @FXML
+    public void toggleTimeAction() {
+        startHourField.setDisable(!timeCheck.isSelected());
+        startMinuteField.setDisable(!timeCheck.isSelected());
+        incHourField.setDisable(!timeCheck.isSelected());
+        incMinuteField.setDisable(!timeCheck.isSelected());
+    }
+    
+  //----------------------------------------------------------------------------
+    
+    private <T> ObservableList<T> convertList(ArrayList<T> list) {
+        return FXCollections.observableArrayList(list);
+    }
+    
+    private void updateSeasonLists() {
+        seasonsList.setItems(convertList(disabledSeasons));
+        enabledSeasonsList.setItems(convertList(enabledSeasons));
+    }
+    private void updateGenreLists() {
+        genresList.setItems(convertList(disabledGenres));
+        enabledGenresList.setItems(convertList(enabledGenres));
+    }
+    
+  //----------------------------------------------------------------------------
+    
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        for(String s : cm.getSeasons()) disabledSeasons.add(s);
+        String temp = disabledSeasons.remove(0);
+        enabledSeasons.add(temp);
+        cm.enableSeason(temp);
+        for(String s : cm.getGenres()) {
+            enabledGenres.add(s);
+            cm.enableGenre(s);
+        }
+        updateSeasonLists();
+        updateGenreLists();
     }    
     
 }

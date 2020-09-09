@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="445.0" prefWidth="429.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="weatherapp.FXMLDocumentController">
+   <children>
+      <TextField fx:id="morningText" editable="false" layoutX="34.0" layoutY="123.0" promptText="Morning" />
+      <TextField fx:id="noonText" editable="false" layoutX="34.0" layoutY="196.0" promptText="Noon" />
+      <TextField fx:id="eveningText" editable="false" layoutX="34.0" layoutY="269.0" promptText="Evening" />
+      <TextField fx:id="nightText" editable="false" layoutX="34.0" layoutY="342.0" promptText="Night" />
+      <Label layoutX="34.0" layoutY="102.0" text="Morning - " />
+      <Label layoutX="34.0" layoutY="175.0" text="Noon - " />
+      <Label layoutX="34.0" layoutY="248.0" text="Evening - " />
+      <Label layoutX="34.0" layoutY="321.0" text="Night - " />
+      <RadioButton fx:id="summerRadio" layoutX="32.0" layoutY="28.0" mnemonicParsing="false" text="Summer">
+         <toggleGroup>
+            <ToggleGroup fx:id="seasons" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="autumnRadio" layoutX="32.0" layoutY="54.0" mnemonicParsing="false" text="Autumn" toggleGroup="$seasons" />
+      <RadioButton fx:id="winterRadio" layoutX="128.0" layoutY="28.0" mnemonicParsing="false" text="Winter" toggleGroup="$seasons" />
+      <RadioButton fx:id="springRadio" layoutX="128.0" layoutY="54.0" mnemonicParsing="false" text="Spring" toggleGroup="$seasons" />
+      <CheckBox fx:id="clearCheck" layoutX="319.0" layoutY="176.0" mnemonicParsing="false" selected="true" text="Clear" />
+      <CheckBox fx:id="windyCheck" layoutX="319.0" layoutY="202.0" mnemonicParsing="false" selected="true" text="Windy" />
+      <CheckBox fx:id="cloudyCheck" layoutX="319.0" layoutY="228.0" mnemonicParsing="false" selected="true" text="Cloudy" />
+      <CheckBox fx:id="rainyCheck" layoutX="319.0" layoutY="254.0" mnemonicParsing="false" selected="true" text="Rainy" />
+      <CheckBox fx:id="snowyCheck" layoutX="319.0" layoutY="280.0" mnemonicParsing="false" selected="true" text="Snowy" />
+      <CheckBox fx:id="conditionsCheck" layoutX="319.0" layoutY="306.0" mnemonicParsing="false" selected="true" text="Conditions" />
+      <CheckBox fx:id="extremesCheck" layoutX="319.0" layoutY="332.0" mnemonicParsing="false" selected="true" text="Extremes" />
+      <Label layoutX="324.0" layoutY="144.0" text="Select from:" />
+      <RadioButton fx:id="allRadio" layoutX="221.0" layoutY="44.0" mnemonicParsing="false" selected="true" text="Anything" toggleGroup="$seasons" />
+      <Button layoutX="232.0" layoutY="123.0" mnemonicParsing="false" onAction="#redoMorning" text="Redo" />
+      <Button layoutX="232.0" layoutY="196.0" mnemonicParsing="false" onAction="#redoNoon" text="Redo" />
+      <Button layoutX="232.0" layoutY="269.0" mnemonicParsing="false" onAction="#redoEvening" text="Redo" />
+      <Button layoutX="232.0" layoutY="342.0" mnemonicParsing="false" onAction="#redoNight" text="Redo" />
+      <Button layoutX="34.0" layoutY="399.0" mnemonicParsing="false" onAction="#generateDay" prefHeight="31.0" prefWidth="252.0" text="Generate Day" />
+      <Label layoutX="110.0" layoutY="4.0" text="Season:" />
+      <Label fx:id="morningLabel" layoutX="110.0" layoutY="102.0" />
+      <Label fx:id="noonLabel" layoutX="89.0" layoutY="175.0" />
+      <Label fx:id="eveningLabel" layoutX="104.0" layoutY="248.0" />
+      <Label fx:id="nightLabel" layoutX="87.0" layoutY="322.0" />
+   </children>
+</AnchorPane>

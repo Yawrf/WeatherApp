@@ -1,47 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="445.0" prefWidth="429.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="weatherapp.FXMLDocumentController">
+
+<AnchorPane id="AnchorPane" prefHeight="619.0" prefWidth="762.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="weatherapp.FXMLDocumentController">
    <children>
-      <TextField fx:id="morningText" editable="false" layoutX="34.0" layoutY="123.0" promptText="Morning" />
-      <TextField fx:id="noonText" editable="false" layoutX="34.0" layoutY="196.0" promptText="Noon" />
-      <TextField fx:id="eveningText" editable="false" layoutX="34.0" layoutY="269.0" promptText="Evening" />
-      <TextField fx:id="nightText" editable="false" layoutX="34.0" layoutY="342.0" promptText="Night" />
-      <Label layoutX="34.0" layoutY="102.0" text="Morning - " />
-      <Label layoutX="34.0" layoutY="175.0" text="Noon - " />
-      <Label layoutX="34.0" layoutY="248.0" text="Evening - " />
-      <Label layoutX="34.0" layoutY="321.0" text="Night - " />
-      <RadioButton fx:id="summerRadio" layoutX="32.0" layoutY="28.0" mnemonicParsing="false" text="Summer">
-         <toggleGroup>
-            <ToggleGroup fx:id="seasons" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="autumnRadio" layoutX="32.0" layoutY="54.0" mnemonicParsing="false" text="Autumn" toggleGroup="$seasons" />
-      <RadioButton fx:id="winterRadio" layoutX="128.0" layoutY="28.0" mnemonicParsing="false" text="Winter" toggleGroup="$seasons" />
-      <RadioButton fx:id="springRadio" layoutX="128.0" layoutY="54.0" mnemonicParsing="false" text="Spring" toggleGroup="$seasons" />
-      <CheckBox fx:id="clearCheck" layoutX="319.0" layoutY="176.0" mnemonicParsing="false" selected="true" text="Clear" />
-      <CheckBox fx:id="windyCheck" layoutX="319.0" layoutY="202.0" mnemonicParsing="false" selected="true" text="Windy" />
-      <CheckBox fx:id="cloudyCheck" layoutX="319.0" layoutY="228.0" mnemonicParsing="false" selected="true" text="Cloudy" />
-      <CheckBox fx:id="rainyCheck" layoutX="319.0" layoutY="254.0" mnemonicParsing="false" selected="true" text="Rainy" />
-      <CheckBox fx:id="snowyCheck" layoutX="319.0" layoutY="280.0" mnemonicParsing="false" selected="true" text="Snowy" />
-      <CheckBox fx:id="conditionsCheck" layoutX="319.0" layoutY="306.0" mnemonicParsing="false" selected="true" text="Conditions" />
-      <CheckBox fx:id="extremesCheck" layoutX="319.0" layoutY="332.0" mnemonicParsing="false" selected="true" text="Extremes" />
-      <Label layoutX="324.0" layoutY="144.0" text="Select from:" />
-      <RadioButton fx:id="allRadio" layoutX="221.0" layoutY="44.0" mnemonicParsing="false" selected="true" text="Anything" toggleGroup="$seasons" />
-      <Button layoutX="232.0" layoutY="123.0" mnemonicParsing="false" onAction="#redoMorning" text="Redo" />
-      <Button layoutX="232.0" layoutY="196.0" mnemonicParsing="false" onAction="#redoNoon" text="Redo" />
-      <Button layoutX="232.0" layoutY="269.0" mnemonicParsing="false" onAction="#redoEvening" text="Redo" />
-      <Button layoutX="232.0" layoutY="342.0" mnemonicParsing="false" onAction="#redoNight" text="Redo" />
-      <Button layoutX="34.0" layoutY="399.0" mnemonicParsing="false" onAction="#generateDay" prefHeight="31.0" prefWidth="252.0" text="Generate Day" />
-      <Label layoutX="110.0" layoutY="4.0" text="Season:" />
-      <Label fx:id="morningLabel" layoutX="110.0" layoutY="102.0" />
-      <Label fx:id="noonLabel" layoutX="89.0" layoutY="175.0" />
-      <Label fx:id="eveningLabel" layoutX="104.0" layoutY="248.0" />
-      <Label fx:id="nightLabel" layoutX="87.0" layoutY="322.0" />
+      <SplitPane dividerPositions="0.3263157894736842" layoutX="225.0" layoutY="179.0" prefHeight="637.0" prefWidth="762.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ListView fx:id="conditionsList" layoutX="2.0" layoutY="30.0" prefHeight="497.0" prefWidth="244.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button layoutY="535.0" mnemonicParsing="false" onAction="#rerollAction" prefHeight="49.0" prefWidth="244.0" text="Reroll Selected" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <CheckBox fx:id="rerollSubsCheck" alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="591.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="150.0" text="Reroll Subsequent" textAlignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="47.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="508.0">
+               <children>
+                  <ListView fx:id="seasonsList" layoutX="14.0" layoutY="34.0" onMouseClicked="#enableSeasonClick" prefHeight="178.0" prefWidth="203.0" />
+                  <ListView fx:id="enabledSeasonsList" layoutX="291.0" layoutY="34.0" onMouseClicked="#disableSeasonClick" prefHeight="178.0" prefWidth="203.0" />
+                  <Label layoutX="87.0" layoutY="8.0" text="Disabled" />
+                  <Label layoutX="364.0" layoutY="8.0" text="Enabled" />
+                  <Label layoutX="227.0" layoutY="45.0" text="Seasons" />
+                  <Button layoutX="225.0" layoutY="92.0" mnemonicParsing="false" onAction="#enableSeasonAction" prefHeight="31.0" prefWidth="58.0" text="-&gt;" />
+                  <Button layoutX="225.0" layoutY="123.0" mnemonicParsing="false" onAction="#disableSeasonAction" prefHeight="31.0" prefWidth="58.0" text="&lt;-" />
+                  <ListView fx:id="genresList" layoutX="14.0" layoutY="229.0" onMouseClicked="#enableGenreClick" prefHeight="178.0" prefWidth="203.0" />
+                  <ListView fx:id="enabledGenresList" layoutX="291.0" layoutY="229.0" onMouseClicked="#disableGenreClick" prefHeight="178.0" prefWidth="203.0" />
+                  <Label layoutX="231.0" layoutY="242.0" prefHeight="19.0" prefWidth="47.0" text="Genres" />
+                  <Button layoutX="225.0" layoutY="287.0" mnemonicParsing="false" onAction="#enableGenreAction" prefHeight="31.0" prefWidth="58.0" text="-&gt;" />
+                  <Button layoutX="225.0" layoutY="318.0" mnemonicParsing="false" onAction="#disableGenreAction" prefHeight="31.0" prefWidth="58.0" text="&lt;-" />
+                  <Button layoutX="214.0" layoutY="572.0" mnemonicParsing="false" onAction="#generateAction" text="Generate" />
+                  <CheckBox fx:id="smoothCheck" layoutX="196.0" layoutY="542.0" mnemonicParsing="false" selected="true" text="Smooth Start">
+                     <tooltip>
+                        <Tooltip text="Make the first Condition a smooth continuation from the current last Condition (if there is one)" textAlignment="CENTER" wrapText="true" />
+                     </tooltip>
+                  </CheckBox>
+                  <TextField fx:id="numField" layoutX="99.0" layoutY="423.0" prefHeight="31.0" prefWidth="81.0" text="12" />
+                  <Label layoutX="181.0" layoutY="428.0" text="Number of Conditions to generate" />
+                  <CheckBox fx:id="timeCheck" layoutX="153.0" layoutY="466.0" mnemonicParsing="false" onAction="#toggleTimeAction" selected="true" text="Starting Time" />
+                  <TextField fx:id="startHourField" layoutX="280.0" layoutY="461.0" prefHeight="31.0" prefWidth="36.0" text="08" />
+                  <Label layoutX="316.0" layoutY="466.0" text=":" />
+                  <TextField fx:id="startMinuteField" layoutX="320.0" layoutY="461.0" prefHeight="31.0" prefWidth="36.0" text="00" />
+                  <Label layoutX="182.0" layoutY="504.0" text="Increment by" />
+                  <TextField fx:id="incHourField" layoutX="280.0" layoutY="499.0" prefHeight="31.0" prefWidth="36.0" text="01" />
+                  <Label layoutX="316.0" layoutY="504.0" text=":" />
+                  <TextField fx:id="incMinuteField" layoutX="320.0" layoutY="499.0" prefHeight="31.0" prefWidth="36.0" text="00" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
    </children>
 </AnchorPane>

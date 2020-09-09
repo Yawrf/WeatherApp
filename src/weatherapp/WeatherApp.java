@@ -26,7 +26,7 @@ public class WeatherApp extends Application {
         scene = new Scene(root);
         
         stage.setScene(scene);
-        stage.setTitle("Weather Generator by Yawrf");
+        stage.setTitle("Weather Generator v2 by Yawrf");
         stage.show();
     }
     

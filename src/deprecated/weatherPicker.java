@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package weatherapp;
+package deprecated;
 
 import java.util.Random;
-import static weatherapp.Season.*;
+import static deprecated.Season.*;
 
 /**
  *
@@ -63,29 +63,29 @@ public class weatherPicker {
         switch(season) {
             case Summer: { //<editor-fold>
                 while(!done) {
-                    int i = rand.nextInt(weatherapp.Summer.values().length);
+                    int i = rand.nextInt(deprecated.Summer.values().length);
                     if(i < 4 && clear) {
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                         done = true;
                         lastCat = Category.Clear;
                     } else if(i < 7 && windy) {
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                         done = true;
                         lastCat = Category.Windy;
                     } else if(i < 12 && cloudy) {
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                         done = true;
                         lastCat = Category.Cloudy;
                     } else if(i < 21 && rainy) {
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                         done = true;
                         lastCat = Category.Rainy;
                     } else if(i < 33 && condition) {
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                         done = true;
                         lastCat = Category.Condition;
                     } else if(extremes) {
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                         done = true;
                         lastCat = Category.Extreme;
                         lastOut = output;
@@ -98,33 +98,33 @@ public class weatherPicker {
             } break;
             case Autumn: { //<editor-fold>
                 while(!done) {
-                    int i = rand.nextInt(weatherapp.Autumn.values().length);
+                    int i = rand.nextInt(deprecated.Autumn.values().length);
                     if(i < 4 && clear) {
-                        output = weatherString(weatherapp.Autumn.values()[i].name());
+                        output = weatherString(deprecated.Autumn.values()[i].name());
                         done = true;
                         lastCat = Category.Clear;
                     } else if(i < 7 && windy) {
-                        output = weatherString(weatherapp.Autumn.values()[i].name());
+                        output = weatherString(deprecated.Autumn.values()[i].name());
                         done = true;
                         lastCat = Category.Windy;
                     } else if(i < 12 && cloudy) {
-                        output = weatherString(weatherapp.Autumn.values()[i].name());
+                        output = weatherString(deprecated.Autumn.values()[i].name());
                         done = true;
                         lastCat = Category.Cloudy;
                     } else if(i < 21 && rainy) {
-                        output = weatherString(weatherapp.Autumn.values()[i].name());
+                        output = weatherString(deprecated.Autumn.values()[i].name());
                         done = true;
                         lastCat = Category.Rainy;
                     } else if(i < 25 && snowy) {
-                        output = weatherString(weatherapp.Autumn.values()[i].name());
+                        output = weatherString(deprecated.Autumn.values()[i].name());
                         done = true;
                         lastCat = Category.Snowy;
                     } else if(i < 36 && condition) {
-                        output = weatherString(weatherapp.Autumn.values()[i].name());
+                        output = weatherString(deprecated.Autumn.values()[i].name());
                         done = true;
                         lastCat = Category.Condition;
                     } else if(i < 38 && extremes) {
-                        output = weatherString(weatherapp.Autumn.values()[i].name());
+                        output = weatherString(deprecated.Autumn.values()[i].name());
                         done = true;
                         lastCat = Category.Extreme;
                         lastOut = output;
@@ -133,33 +133,33 @@ public class weatherPicker {
             } break;
             case Winter: { //<editor-fold>
                 while(!done) {
-                    int i = rand.nextInt(weatherapp.Winter.values().length);
+                    int i = rand.nextInt(deprecated.Winter.values().length);
                     if(i < 4 && clear) {
-                        output = weatherString(weatherapp.Winter.values()[i].name());
+                        output = weatherString(deprecated.Winter.values()[i].name());
                         done = true;
                         lastCat = Category.Clear;
                     } else if(i < 7 && windy) {
-                        output = weatherString(weatherapp.Winter.values()[i].name());
+                        output = weatherString(deprecated.Winter.values()[i].name());
                         done = true;
                         lastCat = Category.Windy;
                     } else if(i < 9 && cloudy) {
-                        output = weatherString(weatherapp.Winter.values()[i].name());
+                        output = weatherString(deprecated.Winter.values()[i].name());
                         done = true;
                         lastCat = Category.Cloudy;
                     } else if(i < 12 && rainy) {
-                        output = weatherString(weatherapp.Winter.values()[i].name());
+                        output = weatherString(deprecated.Winter.values()[i].name());
                         done = true;
                         lastCat = Category.Rainy;
                     } else if(i < 19 && snowy) {
-                        output = weatherString(weatherapp.Winter.values()[i].name());
+                        output = weatherString(deprecated.Winter.values()[i].name());
                         done = true;
                         lastCat = Category.Snowy;
                     } else if(i < 27 && condition) {
-                        output = weatherString(weatherapp.Winter.values()[i].name());
+                        output = weatherString(deprecated.Winter.values()[i].name());
                         done = true;
                         lastCat = Category.Condition;
                     } else if(i < 28 && extremes) {
-                        output = weatherString(weatherapp.Winter.values()[i].name());
+                        output = weatherString(deprecated.Winter.values()[i].name());
                         done = true;
                         lastCat = Category.Extreme;
                         lastOut = output;
@@ -168,33 +168,33 @@ public class weatherPicker {
             } break;
             case Spring: { //<editor-fold>
                 while(!done) {
-                    int i = rand.nextInt(weatherapp.Spring.values().length);
+                    int i = rand.nextInt(deprecated.Spring.values().length);
                     if(i < 4 && clear) {
-                        output = weatherString(weatherapp.Spring.values()[i].name());
+                        output = weatherString(deprecated.Spring.values()[i].name());
                         done = true;
                         lastCat = Category.Clear;
                     } else if(i < 7 && windy) {
-                        output = weatherString(weatherapp.Spring.values()[i].name());
+                        output = weatherString(deprecated.Spring.values()[i].name());
                         done = true;
                         lastCat = Category.Windy;
                     } else if(i < 12 && cloudy) {
-                        output = weatherString(weatherapp.Spring.values()[i].name());
+                        output = weatherString(deprecated.Spring.values()[i].name());
                         done = true;
                         lastCat = Category.Cloudy;
                     } else if(i < 21 && rainy) {
-                        output = weatherString(weatherapp.Spring.values()[i].name());
+                        output = weatherString(deprecated.Spring.values()[i].name());
                         done = true;
                         lastCat = Category.Rainy;
                     } else if(i < 24 && snowy) {
-                        output = weatherString(weatherapp.Spring.values()[i].name());
+                        output = weatherString(deprecated.Spring.values()[i].name());
                         done = true;
                         lastCat = Category.Snowy;
                     } else if(i < 35 && condition) {
-                        output = weatherString(weatherapp.Spring.values()[i].name());
+                        output = weatherString(deprecated.Spring.values()[i].name());
                         done = true;
                         lastCat = Category.Condition;
                     } else if(i < 38 && extremes) {
-                        output = weatherString(weatherapp.Spring.values()[i].name());
+                        output = weatherString(deprecated.Spring.values()[i].name());
                         done = true;
                         lastCat = Category.Extreme;
                         lastOut = output;
@@ -203,33 +203,33 @@ public class weatherPicker {
             } break;
             case All: { //<editor-fold>
                 while(!done) {
-                    int i = rand.nextInt(weatherapp.All.values().length);
+                    int i = rand.nextInt(deprecated.All.values().length);
                     if(i < 4 && clear) {
-                        output = weatherString(weatherapp.All.values()[i].name());
+                        output = weatherString(deprecated.All.values()[i].name());
                         done = true;
                         lastCat = Category.Clear;
                     } else if(i < 7 && windy) {
-                        output = weatherString(weatherapp.All.values()[i].name());
+                        output = weatherString(deprecated.All.values()[i].name());
                         done = true;
                         lastCat = Category.Windy;
                     } else if(i < 13 && cloudy) {
-                        output = weatherString(weatherapp.All.values()[i].name());
+                        output = weatherString(deprecated.All.values()[i].name());
                         done = true;
                         lastCat = Category.Cloudy;
                     } else if(i < 22 && rainy) {
-                        output = weatherString(weatherapp.All.values()[i].name());
+                        output = weatherString(deprecated.All.values()[i].name());
                         done = true;
                         lastCat = Category.Rainy;
                     } else if(i < 29 && snowy) {
-                        output = weatherString(weatherapp.All.values()[i].name());
+                        output = weatherString(deprecated.All.values()[i].name());
                         done = true;
                         lastCat = Category.Snowy;
                     } else if(i < 42 && condition) {
-                        output = weatherString(weatherapp.All.values()[i].name());
+                        output = weatherString(deprecated.All.values()[i].name());
                         done = true;
                         lastCat = Category.Condition;
                     } else if(i < 48 && extremes) {
-                        output = weatherString(weatherapp.All.values()[i].name());
+                        output = weatherString(deprecated.All.values()[i].name());
                         done = true;
                         lastCat = Category.Extreme;
                         lastOut = output;
@@ -275,23 +275,23 @@ public class weatherPicker {
                     switch(season) {
                         case Summer: {
                             int i = rand.nextInt(5) + 34;
-                            output = weatherString(weatherapp.Summer.values()[i].name());
+                            output = weatherString(deprecated.Summer.values()[i].name());
                         } break;
                         case Autumn: {
                             int i = rand.nextInt(2) + 37;
-                            output = weatherString(weatherapp.Autumn.values()[i].name());
+                            output = weatherString(deprecated.Autumn.values()[i].name());
                         } break;
                         case Winter: {
                             int i = 28;
-                            output = weatherString(weatherapp.Winter.values()[i].name());
+                            output = weatherString(deprecated.Winter.values()[i].name());
                         } break;
                         case Spring: {
                             int i = rand.nextInt(3) + 36;
-                            output = weatherString(weatherapp.Spring.values()[i].name());
+                            output = weatherString(deprecated.Spring.values()[i].name());
                         } break;
                         case All: {
                             int i = rand.nextInt(6) + 43;
-                            output = weatherString(weatherapp.All.values()[i].name());
+                            output = weatherString(deprecated.All.values()[i].name());
                         } break;
                     }
                     lastOut = output;
@@ -485,23 +485,23 @@ public class weatherPicker {
                 switch(season) {
                     case Summer: {
                         int i = rand.nextInt(12) + 21;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Autumn: {
                         int i = rand.nextInt(11) + 25;
-                        output = weatherString(weatherapp.Autumn.values()[i].name());
+                        output = weatherString(deprecated.Autumn.values()[i].name());
                     } break;
                     case Winter: {
                         int i = rand.nextInt(8) + 19;
-                        output = weatherString(weatherapp.Winter.values()[i].name());
+                        output = weatherString(deprecated.Winter.values()[i].name());
                     } break;
                     case Spring: {
                         int i = rand.nextInt(11) + 24;
-                        output = weatherString(weatherapp.Spring.values()[i].name());
+                        output = weatherString(deprecated.Spring.values()[i].name());
                     } break;
                     case All: {
                         int i = rand.nextInt(13) + 29;
-                        output = weatherString(weatherapp.All.values()[i].name());
+                        output = weatherString(deprecated.All.values()[i].name());
                     } break;
                 }
             } //</editor-fold>
@@ -513,19 +513,19 @@ public class weatherPicker {
                 switch(current) {
                     case Clear: {
                         int i = rand.nextInt(4) + 0;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Windy: {
                         int i = rand.nextInt(3) + 4;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Cloudy: {
                         int i = rand.nextInt(5) + 7;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Rainy: {
                         int i = rand.nextInt(9) + 12;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                 }
             } break; //</editor-fold>
@@ -533,23 +533,23 @@ public class weatherPicker {
                 switch(current) {
                     case Clear: {
                         int i = rand.nextInt(4) + 0;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Windy: {
                         int i = rand.nextInt(3) + 4;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Cloudy: {
                         int i = rand.nextInt(5) + 7;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Rainy: {
                         int i = rand.nextInt(9) + 12;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Snowy: {
                         int i = rand.nextInt(4) + 21;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                 }
             } break; //</editor-fold>
@@ -557,23 +557,23 @@ public class weatherPicker {
                 switch(current) {
                     case Clear: {
                         int i = rand.nextInt(4) + 0;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Windy: {
                         int i = rand.nextInt(3) + 4;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Cloudy: {
                         int i = rand.nextInt(2) + 7;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Rainy: {
                         int i = rand.nextInt(3) + 9;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Snowy: {
                         int i = rand.nextInt(7) + 12;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                 }
             } break; //</editor-fold>
@@ -581,23 +581,23 @@ public class weatherPicker {
                 switch(current) {
                     case Clear: {
                         int i = rand.nextInt(4) + 0;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Windy: {
                         int i = rand.nextInt(3) + 4;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Cloudy: {
                         int i = rand.nextInt(5) + 7;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Rainy: {
                         int i = rand.nextInt(9) + 12;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Snowy: {
                         int i = rand.nextInt(3) + 21;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                 }
             } break; //</editor-fold>
@@ -605,23 +605,23 @@ public class weatherPicker {
                 switch(current) {
                     case Clear: {
                         int i = rand.nextInt(4) + 0;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Windy: {
                         int i = rand.nextInt(3) + 4;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Cloudy: {
                         int i = rand.nextInt(6) + 7;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Rainy: {
                         int i = rand.nextInt(9) + 13;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                     case Snowy: {
                         int i = rand.nextInt(7) + 22;
-                        output = weatherString(weatherapp.Summer.values()[i].name());
+                        output = weatherString(deprecated.Summer.values()[i].name());
                     } break;
                 }
             } break; //</editor-fold>

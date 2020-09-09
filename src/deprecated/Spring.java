@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package weatherapp;
+package deprecated;
 
 /**
  *
@@ -11,7 +11,7 @@ package weatherapp;
  */
 
 //<editor-fold>
-public enum Autumn {
+public enum Spring {
     // Clear Variants
     Clear, // 1
     Sunny, // 2
@@ -43,11 +43,11 @@ public enum Autumn {
     
     // Snowy Variants
     Sleet, // 22
-    LightSnow, // 23
+    WetSnow, // 23
     Thundersnow, // 24
-    Icy, // 25
     
     // Condition Variants
+    Hot, // 25
     Warm, // 26
     Cold, // 27
     Chilly, // 28
@@ -55,13 +55,13 @@ public enum Autumn {
     Humid, // 30
     Muggy, // 31
     Dry, // 32
-    Arid, // 33
-    Pleasant, // 34
-    Mild, // 35
-    Miserable, // 36
+    Pleasant, // 33
+    Mild, // 34
+    Miserable, // 35
     
     //Extreme Variants
-    Flood, // 37
-    Drought, // 38
+    Tornados, // 36
+    Blizzard, // 37
+    Hurricane, // 38
 }
 //</editor-fold>
